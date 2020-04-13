@@ -10,12 +10,23 @@ using System.Windows.Forms;
 using System.Data;
 using MySql.Data.MySqlClient;
 using Expense_Manager.Repository;
+using Expense_Manager.DTO;
+using Expense_Manager.Controller;
 
 namespace Expense_Manager
 {
     public partial class Form1 : Form
     {
+        public CategoryController categoryController;
+
         DBAccess dBAccess = new DBAccess();
+        public Form1(CategoryController _categoryController)
+        {
+            InitializeComponent();
+            categoryController = _categoryController;
+
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -29,26 +40,20 @@ namespace Expense_Manager
         private void button1_Click(object sender, EventArgs e)
         {
             string categoryName = categoryInput.Text;
-            int categoryId = 10;
 
             if (categoryName.Equals(""))
             {
                 MessageBox.Show("Please Enter Category Name");
-            }
-            MySqlCommand insertCommand = new MySqlCommand("insert into Category(categoryId, CategoryName) values(@categoryId, @CategoryName)");
+            }            
 
-            insertCommand.Parameters.AddWithValue("@categoryId", categoryId);
-            insertCommand.Parameters.AddWithValue("@categoryName", categoryName);
+            CategoryAddDto categoryAdd = new CategoryAddDto();
+            categoryAdd.categoryName = categoryName;
 
-            int row = dBAccess.executeQuery(insertCommand);
-            if(row == 1)
+            Object response = categoryController.addCategory(categoryAdd);
+
+            if (response is Exception)
             {
                 MessageBox.Show("Category Added Successfully");
-              
-            }
-            else
-            {
-                MessageBox.Show("Error Occured!");
             }
         }
 
@@ -79,6 +84,13 @@ namespace Expense_Manager
             gridView.Show();
 
 
+        }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            string sql = "delete from Category where categoryId=11";
+            MySqlCommand sqlCommand = new MySqlCommand(sql);
+            dBAccess.executeQuery(sqlCommand);
         }
     }
 }

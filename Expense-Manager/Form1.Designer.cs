@@ -33,9 +33,8 @@ namespace Expense_Manager
             this.label1 = new System.Windows.Forms.Label();
             this.categoryInput = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.showCategories = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -66,39 +65,39 @@ namespace Expense_Manager
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(319, 170);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 3;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
             // showCategories
             // 
-            this.showCategories.Location = new System.Drawing.Point(392, 379);
+            this.showCategories.Location = new System.Drawing.Point(282, 318);
             this.showCategories.Name = "showCategories";
-            this.showCategories.Size = new System.Drawing.Size(110, 23);
+            this.showCategories.Size = new System.Drawing.Size(149, 23);
             this.showCategories.TabIndex = 4;
             this.showCategories.Text = "showCategories";
             this.showCategories.UseVisualStyleBackColor = true;
             this.showCategories.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(446, 318);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(106, 23);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "delete";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_2);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.showCategories);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.categoryInput);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,8 +113,8 @@ namespace Expense_Manager
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox categoryInput;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button showCategories;
+        private System.Windows.Forms.Button button2;
     }
 }
 
