@@ -1,0 +1,17 @@
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense-Manager.csprojAssemblyReference.cache
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense_Manager.Form1.resources
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense_Manager.Properties.Resources.resources
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense-Manager.csproj.GenerateResource.cache
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\bin\Debug\Expense-Manager.exe.config
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\bin\Debug\Expense-Manager.exe
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\bin\Debug\Expense-Manager.pdb
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense-Manager.exe
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense-Manager.pdb
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\bin\Debug\MySql.Data.dll
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\bin\Debug\Google.Protobuf.dll
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\bin\Debug\Renci.SshNet.dll
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\bin\Debug\MySql.Data.xml
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense-Manager.csproj.CopyComplete
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense_Manager.CategoryView.resources
