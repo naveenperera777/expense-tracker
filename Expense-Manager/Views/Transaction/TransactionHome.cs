@@ -22,5 +22,11 @@ namespace Expense_Manager.Views.Transaction
             AddTransaction addTransaction = new AddTransaction();
             addTransaction.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AllTransactions allTransactions = new AllTransactions();
+            allTransactions.Show();
+        }
     }
 }

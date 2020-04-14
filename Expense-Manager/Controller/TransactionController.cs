@@ -22,5 +22,11 @@ namespace Expense_Manager.Controller
             object response = transactionService.addTransaction(transactionAdd);
             return response;
         }
+
+        public object deleteTransaction(int transactionId)
+        {
+            object response = transactionService.deleteTransaction(transactionId);
+            return response;
+        }
     }
 }

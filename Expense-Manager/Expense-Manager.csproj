@@ -94,6 +94,12 @@
     <Compile Include="Views\Transaction\AddTransaction.Designer.cs">
       <DependentUpon>AddTransaction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Transaction\AllTransactions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Transaction\AllTransactions.Designer.cs">
+      <DependentUpon>AllTransactions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Transaction\TransactionHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Transaction\AddTransaction.resx">
       <DependentUpon>AddTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Transaction\AllTransactions.resx">
+      <DependentUpon>AllTransactions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Transaction\TransactionHome.resx">
       <DependentUpon>TransactionHome.cs</DependentUpon>

@@ -1,4 +1,5 @@
 ﻿using Expense_Manager.DTO;
+using Expense_Manager.Model.Transaction;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Expense_Manager.Services.TransactionService
     {
         object addTransaction(TransactionAddDto transactionAddDto);
         object updateTransaction();
-        object deleteTransaction();
+        object deleteTransaction(int transactionId);
+        object getAllTransactions();
     }
 }

@@ -45,11 +45,13 @@ namespace Expense_Manager.Views.Transaction
             string transaction_Name = transactionName.Text;
             double transaction_Amount = double.Parse(amount.Text);
             string transaction_notes = notes.Text;
+            DateTime tansaction_date = dateTimePicker1.Value;
 
             TransactionAddDto transactionAdd = new TransactionAddDto();
             transactionAdd.transactionName = transaction_Name;
             transactionAdd.transactionNote = transaction_notes;
             transactionAdd.transactionAmount = transaction_Amount;
+            transactionAdd.transactionDate = tansaction_date;
 
             KeyValuePair<string, int> keyValue = (KeyValuePair<string, int>)comboBox2.SelectedItem;
 

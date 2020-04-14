@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using Expense_Manager.Response;
+using Expense_Manager.Model.Transaction;
 
 namespace Expense_Manager.Services.TransactionService
 {
@@ -20,7 +21,7 @@ namespace Expense_Manager.Services.TransactionService
 
             insertCommand.Parameters.AddWithValue("@transactionName", transactionAddDto.transactionName);
             insertCommand.Parameters.AddWithValue("@transactionAmount", transactionAddDto.transactionAmount);
-            insertCommand.Parameters.AddWithValue("@transactionDate", new DateTime());
+            insertCommand.Parameters.AddWithValue("@transactionDate", transactionAddDto.transactionDate);
             insertCommand.Parameters.AddWithValue("@categoryId", transactionAddDto.categoryId);
             insertCommand.Parameters.AddWithValue("@transactionNote", transactionAddDto.transactionNote);
 
@@ -36,11 +37,50 @@ namespace Expense_Manager.Services.TransactionService
                 SuccessResponse successResponse = new SuccessResponse();
                 return successResponse;
             }
+        }
+
+        public object deleteTransaction(int transactionId)
+        {
+            string sql = "delete from transaction where transactionId=@transactionId";
+            MySqlCommand deleteTransaction = new MySqlCommand(sql);
+            deleteTransaction.Parameters.AddWithValue("@transactionId", transactionId);
+            int row = dBAccess.executeQuery(deleteTransaction);
+
+            if (row < 0)
+            {
+                throw new Exception();
+            }
+            else
+            {
+                SuccessResponse successResponse = new SuccessResponse();
+                return successResponse;
+            }
+
+        }
+
+        public object deleteTransactions(string transactionId)
+        {
+
             throw new NotImplementedException();
         }
 
-        public object deleteTransaction()
+        public object getAllTransactions()
         {
+            string query = "select * from transaction";
+            MySqlDataReader reader = dBAccess.readDatathroughReader(query);
+            List<Transaction> categories = new List<Transaction>();
+            while (reader.Read())
+            {
+                Transaction transaction = new Transaction();
+                transaction.transactionId = reader.GetInt32("transactionId");
+                transaction.transactionAmount = reader.GetDouble("transactionAmount");
+                transaction.transactionName = reader["transactionName"].ToString();
+                transaction.transactionNote = reader["transactionNote"].ToString();
+                transaction.categoryId = reader.GetInt32("categoryId");
+                transaction.transactionDate = reader.GetDateTime("transactionDate");
+
+            }
+            reader.Close();
             throw new NotImplementedException();
         }
 
@@ -48,5 +88,7 @@ namespace Expense_Manager.Services.TransactionService
         {
             throw new NotImplementedException();
         }
+
+      
     }
 }
