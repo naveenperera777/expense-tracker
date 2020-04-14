@@ -37,5 +37,10 @@ namespace Expense_Manager.Services.CategoryService
             }
           
         }
+
+        public object getAllCategories()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

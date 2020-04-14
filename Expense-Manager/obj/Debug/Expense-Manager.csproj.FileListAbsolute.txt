@@ -17,3 +17,5 @@ C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense-Manage
 C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense_Manager.CategoryView.resources
 C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense_Manager.HomePage.resources
 C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense_Manager.Views.CategoryAdd.resources
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense_Manager.Views.Transaction.TransactionHome.resources
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense_Manager.Views.Transaction.AddTransaction.resources

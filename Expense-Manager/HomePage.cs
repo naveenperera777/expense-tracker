@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Expense_Manager.Views.Transaction;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,12 @@ namespace Expense_Manager
         {
             Form1 form = new Form1();
             form.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            TransactionHome transactionHome = new TransactionHome();
+            transactionHome.Show();
         }
     }
 }

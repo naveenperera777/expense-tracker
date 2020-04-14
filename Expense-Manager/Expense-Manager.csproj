@@ -49,17 +49,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\CategoryController.cs" />
+    <Compile Include="Controller\TransactionController.cs" />
     <Compile Include="DTO\CategoryAddDto.cs" />
+    <Compile Include="DTO\CategoryRetrieveDto.cs" />
+    <Compile Include="DTO\TransactionAddDto.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CategoryView.cs">
+    <Compile Include="Model\Transaction\Transaction.cs" />
+    <Compile Include="Services\TransactionService\ITransactionService.cs" />
+    <Compile Include="Services\TransactionService\TransactionServiceImpl.cs" />
+    <Compile Include="Views\Category\CategoryView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\CategoryView.Designer.cs">
+    <Compile Include="Views\Category\CategoryView.Designer.cs">
       <DependentUpon>CategoryView.cs</DependentUpon>
     </Compile>
     <Compile Include="HomePage.cs">
@@ -76,13 +82,25 @@
     <Compile Include="Services\CategoryService\CategoryServiceImpl.cs" />
     <Compile Include="Services\CategoryService\ICategoryRepository.cs" />
     <Compile Include="Services\CategoryService\ICategoryService.cs" />
-    <Compile Include="Views\CategoryAdd.cs">
+    <Compile Include="Views\Category\CategoryAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\CategoryAdd.Designer.cs">
+    <Compile Include="Views\Category\CategoryAdd.Designer.cs">
       <DependentUpon>CategoryAdd.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\CategoryView.resx">
+    <Compile Include="Views\Transaction\AddTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Transaction\AddTransaction.Designer.cs">
+      <DependentUpon>AddTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Transaction\TransactionHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Transaction\TransactionHome.Designer.cs">
+      <DependentUpon>TransactionHome.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\Category\CategoryView.resx">
       <DependentUpon>CategoryView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
@@ -100,8 +118,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\CategoryAdd.resx">
+    <EmbeddedResource Include="Views\Category\CategoryAdd.resx">
       <DependentUpon>CategoryAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Transaction\AddTransaction.resx">
+      <DependentUpon>AddTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Transaction\TransactionHome.resx">
+      <DependentUpon>TransactionHome.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

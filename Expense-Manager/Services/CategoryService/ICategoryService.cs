@@ -10,5 +10,6 @@ namespace Expense_Manager.Services.CategoryService
     public interface ICategoryService
     {
         object addCategory(CategoryAddDto categoryAddDto);
+        object getAllCategories();
     }
 }
