@@ -42,13 +42,10 @@ namespace Expense_Manager
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("First");
-
-          
+                      
                 DataGridViewRow row = dataGridView1.SelectedRows[0];
                 string str = row.Cells["categoryId"].Value.ToString();
                 int categoryId = int.Parse(str);
-                MessageBox.Show("HIIII");
                 MessageBox.Show(str);
 
                 string sql = "delete from Category where categoryId=@categoryId";

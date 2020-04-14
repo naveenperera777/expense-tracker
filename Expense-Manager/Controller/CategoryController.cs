@@ -17,6 +17,10 @@ namespace Expense_Manager.Controller
             categoryService = _categoryService;
         }
 
+        public CategoryController()
+        {
+        }
+
         public object addCategory(CategoryAddDto categoryAddDto) {
             object response = categoryService.addCategory(categoryAddDto);
             return response;

@@ -9,5 +9,7 @@ namespace Expense_Manager.DTO
     public class CategoryAddDto
     {
         public string categoryName { get; set; }
+        public string categoryType { get; set; }
+        public double categoryLimit { get; set; }
     }
 }

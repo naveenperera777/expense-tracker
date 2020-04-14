@@ -15,5 +15,5 @@ C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\bin\Debug\Renci.SshNet.d
 C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\bin\Debug\MySql.Data.xml
 C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense-Manager.csproj.CopyComplete
 C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense_Manager.CategoryView.resources
-C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense_Manager.CategoryList.resources
 C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense_Manager.HomePage.resources
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense_Manager.Views.CategoryAdd.resources

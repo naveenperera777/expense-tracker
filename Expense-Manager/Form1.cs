@@ -12,12 +12,15 @@ using MySql.Data.MySqlClient;
 using Expense_Manager.Repository;
 using Expense_Manager.DTO;
 using Expense_Manager.Controller;
+using Expense_Manager.Services.CategoryService;
+using Expense_Manager.Views;
 
 namespace Expense_Manager
 {
     public partial class Form1 : Form
     {
         public CategoryController categoryController;
+        public ICategoryService categoryService = new CategoryServiceImpl();
 
         DBAccess dBAccess = new DBAccess();
         public Form1(CategoryController _categoryController)
@@ -29,6 +32,7 @@ namespace Expense_Manager
 
         public Form1()
         {
+            this.categoryController = new CategoryController(categoryService);
             InitializeComponent();
         }
 
@@ -39,22 +43,10 @@ namespace Expense_Manager
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string categoryName = categoryInput.Text;
+            CategoryAdd categoryAddView = new CategoryAdd();
+            categoryAddView.Show();
 
-            if (categoryName.Equals(""))
-            {
-                MessageBox.Show("Please Enter Category Name");
-            }            
-
-            CategoryAddDto categoryAdd = new CategoryAddDto();
-            categoryAdd.categoryName = categoryName;
-
-            Object response = categoryController.addCategory(categoryAdd);
-
-            if (response is Exception)
-            {
-                MessageBox.Show("Category Added Successfully");
-            }
+            
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

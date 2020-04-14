@@ -48,12 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoryList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CategoryList.Designer.cs">
-      <DependentUpon>CategoryList.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controller\CategoryController.cs" />
     <Compile Include="DTO\CategoryAddDto.cs" />
     <Compile Include="Form1.cs">
@@ -62,10 +56,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="CategoryView.cs">
+    <Compile Include="Views\CategoryView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CategoryView.Designer.cs">
+    <Compile Include="Views\CategoryView.Designer.cs">
       <DependentUpon>CategoryView.cs</DependentUpon>
     </Compile>
     <Compile Include="HomePage.cs">
@@ -82,10 +76,13 @@
     <Compile Include="Services\CategoryService\CategoryServiceImpl.cs" />
     <Compile Include="Services\CategoryService\ICategoryRepository.cs" />
     <Compile Include="Services\CategoryService\ICategoryService.cs" />
-    <EmbeddedResource Include="CategoryList.resx">
-      <DependentUpon>CategoryList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CategoryView.resx">
+    <Compile Include="Views\CategoryAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CategoryAdd.Designer.cs">
+      <DependentUpon>CategoryAdd.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\CategoryView.resx">
       <DependentUpon>CategoryView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
@@ -103,6 +100,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\CategoryAdd.resx">
+      <DependentUpon>CategoryAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -19,9 +19,11 @@ namespace Expense_Manager.Services.CategoryService
         public object addCategory(CategoryAddDto categoryAddDto)
         {
 
-            MySqlCommand insertCommand = new MySqlCommand("insert into Category(CategoryName) values(@CategoryName)");
+            MySqlCommand insertCommand = new MySqlCommand("insert into Category(CategoryName, CategoryType, categoryLimit) values(@CategoryName, @CategoryType, @CategoryLimit)");
 
             insertCommand.Parameters.AddWithValue("@categoryName", categoryAddDto.categoryName);
+            insertCommand.Parameters.AddWithValue("@categoryType", categoryAddDto.categoryType);
+            insertCommand.Parameters.AddWithValue("@categoryLimit",categoryAddDto.categoryLimit);
 
             int row = dBAccess.executeQuery(insertCommand);
 

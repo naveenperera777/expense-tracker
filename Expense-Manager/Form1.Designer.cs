@@ -30,36 +30,16 @@ namespace Expense_Manager
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.categoryInput = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.showCategories = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(236, 65);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Add Category";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // categoryInput
-            // 
-            this.categoryInput.Location = new System.Drawing.Point(344, 65);
-            this.categoryInput.Name = "categoryInput";
-            this.categoryInput.Size = new System.Drawing.Size(198, 20);
-            this.categoryInput.TabIndex = 1;
-            this.categoryInput.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(356, 116);
+            this.button1.Location = new System.Drawing.Point(226, 151);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(149, 51);
             this.button1.TabIndex = 2;
             this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = true;
@@ -67,9 +47,9 @@ namespace Expense_Manager
             // 
             // showCategories
             // 
-            this.showCategories.Location = new System.Drawing.Point(282, 318);
+            this.showCategories.Location = new System.Drawing.Point(226, 257);
             this.showCategories.Name = "showCategories";
-            this.showCategories.Size = new System.Drawing.Size(149, 23);
+            this.showCategories.Size = new System.Drawing.Size(149, 53);
             this.showCategories.TabIndex = 4;
             this.showCategories.Text = "showCategories";
             this.showCategories.UseVisualStyleBackColor = true;
@@ -77,7 +57,7 @@ namespace Expense_Manager
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(446, 318);
+            this.button2.Location = new System.Drawing.Point(448, 215);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(106, 23);
             this.button2.TabIndex = 5;
@@ -93,13 +73,10 @@ namespace Expense_Manager
             this.Controls.Add(this.button2);
             this.Controls.Add(this.showCategories);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.categoryInput);
-            this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -109,9 +86,6 @@ namespace Expense_Manager
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox categoryInput;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button showCategories;
         private System.Windows.Forms.Button button2;
