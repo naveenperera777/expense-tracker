@@ -53,6 +53,7 @@
     <Compile Include="DTO\CategoryAddDto.cs" />
     <Compile Include="DTO\CategoryRetrieveDto.cs" />
     <Compile Include="DTO\TransactionAddDto.cs" />
+    <Compile Include="DTO\TransactionEditDto.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +101,12 @@
     <Compile Include="Views\Transaction\AllTransactions.Designer.cs">
       <DependentUpon>AllTransactions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Transaction\EditTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Transaction\EditTransaction.Designer.cs">
+      <DependentUpon>EditTransaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Transaction\TransactionHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Transaction\AllTransactions.resx">
       <DependentUpon>AllTransactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Transaction\EditTransaction.resx">
+      <DependentUpon>EditTransaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Transaction\TransactionHome.resx">
       <DependentUpon>TransactionHome.cs</DependentUpon>

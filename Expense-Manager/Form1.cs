@@ -22,11 +22,17 @@ namespace Expense_Manager
         public CategoryController categoryController;
         public ICategoryService categoryService = new CategoryServiceImpl();
 
+        DataTable dataTable = new DataTable();
+
         DBAccess dBAccess = new DBAccess();
         public Form1(CategoryController _categoryController)
         {
             InitializeComponent();
             categoryController = _categoryController;
+            string sql = "select * from Category";
+            dBAccess.readDatathroughAdapter(sql, dataTable);
+            dataGridView1.DataSource = dataTable;
+            dBAccess.closeConn();
 
         }
 
@@ -83,6 +89,11 @@ namespace Expense_Manager
             string sql = "delete from Category where categoryId=11";
             MySqlCommand sqlCommand = new MySqlCommand(sql);
             dBAccess.executeQuery(sqlCommand);
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+                
         }
     }
 }

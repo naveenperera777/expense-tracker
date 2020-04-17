@@ -2,6 +2,7 @@
 using Expense_Manager.Services.TransactionService;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,18 @@ namespace Expense_Manager.Controller
         public object deleteTransaction(int transactionId)
         {
             object response = transactionService.deleteTransaction(transactionId);
+            return response;
+        }
+
+        public object GetAllTransacttions(DataTable dataTable)
+        {
+            object response = transactionService.getAllTransactions(dataTable);
+            return response;
+        }
+
+        public object updateTransactions(TransactionEditDto transactionEditDto)
+        {
+            object response = transactionService.updateTransactions(transactionEditDto);
             return response;
         }
     }

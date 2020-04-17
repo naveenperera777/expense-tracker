@@ -38,9 +38,11 @@ namespace Expense_Manager.Services.CategoryService
           
         }
 
-        public object getAllCategories()
+        public MySqlDataReader getAllCategories()
         {
-            throw new NotImplementedException();
+            String query = "select * from category";
+            MySqlDataReader reader = dBAccess.readDatathroughReader(query);
+            return reader;
         }
     }
 }

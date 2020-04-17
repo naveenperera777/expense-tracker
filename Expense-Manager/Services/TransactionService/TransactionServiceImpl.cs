@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using Expense_Manager.Response;
 using Expense_Manager.Model.Transaction;
+using System.Data;
+using System.Windows.Forms;
 
 namespace Expense_Manager.Services.TransactionService
 {
@@ -61,11 +63,6 @@ namespace Expense_Manager.Services.TransactionService
         public object deleteTransactions(string transactionId)
         {
 
-            throw new NotImplementedException();
-        }
-
-        public object getAllTransactions()
-        {
             string query = "select * from transaction";
             MySqlDataReader reader = dBAccess.readDatathroughReader(query);
             List<Transaction> categories = new List<Transaction>();
@@ -82,13 +79,43 @@ namespace Expense_Manager.Services.TransactionService
             }
             reader.Close();
             throw new NotImplementedException();
+
         }
 
-        public object updateTransaction()
+        public object getAllTransactions(DataTable dataTable)
         {
+            string sql = "select `transactionId`, `transactionName`, `transactionAmount`, `transactionNote`, `categoryId`, CAST(`transactionDate` AS DATETIME) AS transactionDate  from transaction";
+            dBAccess.readDatathroughAdapter(sql, dataTable);
+            dBAccess.closeConn();
+
+            return dataTable;
+                               
+        }
+
+        public object updateTransactions(TransactionEditDto transactionEditDto)
+        {
+            string sql = "update transaction set transactionName=@transactionName, transactionAmount=@transactionAmount, transactionNote=@transactionNote, transactionDate=@transactionDate, categoryId=@categoryId  where transactionId=@transactionId";
+            MySqlCommand updateTransaction = new MySqlCommand(sql);
+            updateTransaction.Parameters.AddWithValue("@transactionName", transactionEditDto.transactionName);
+            updateTransaction.Parameters.AddWithValue("@transactionAmount", transactionEditDto.transactionAmount);
+            updateTransaction.Parameters.AddWithValue("@transactionNote", transactionEditDto.transactionNote);
+            updateTransaction.Parameters.AddWithValue("@transactionDate", transactionEditDto.transactionDate);
+            updateTransaction.Parameters.AddWithValue("@categoryId", transactionEditDto.categoryId);
+
+            updateTransaction.Parameters.AddWithValue("@transactionId", transactionEditDto.transactionId);
+
+            int row = dBAccess.executeQuery(updateTransaction);
+            if (row < 0)
+            {
+                throw new Exception();
+            }
+            else
+            {
+                SuccessResponse successResponse = new SuccessResponse();
+                return successResponse;
+            }
+
             throw new NotImplementedException();
         }
-
-      
     }
 }

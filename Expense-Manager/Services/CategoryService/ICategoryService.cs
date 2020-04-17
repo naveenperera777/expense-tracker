@@ -1,4 +1,5 @@
 ﻿using Expense_Manager.DTO;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,6 @@ namespace Expense_Manager.Services.CategoryService
     public interface ICategoryService
     {
         object addCategory(CategoryAddDto categoryAddDto);
-        object getAllCategories();
+        MySqlDataReader getAllCategories();
     }
 }

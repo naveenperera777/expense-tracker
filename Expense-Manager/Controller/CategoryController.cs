@@ -1,5 +1,6 @@
 ﻿using Expense_Manager.DTO;
 using Expense_Manager.Services.CategoryService;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,12 @@ namespace Expense_Manager.Controller
 
         public object addCategory(CategoryAddDto categoryAddDto) {
             object response = categoryService.addCategory(categoryAddDto);
+            return response;
+        }
+
+        public MySqlDataReader getAllCategories()
+        {
+            MySqlDataReader response = categoryService.getAllCategories();
             return response;
         }
     }
