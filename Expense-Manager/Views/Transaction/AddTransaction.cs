@@ -2,6 +2,7 @@
 using Expense_Manager.DTO;
 using Expense_Manager.Model.Category;
 using Expense_Manager.Repository;
+using Expense_Manager.Services.EntityService;
 using Expense_Manager.Services.TransactionService;
 using MySql.Data.MySqlClient;
 using System;
@@ -19,15 +20,26 @@ namespace Expense_Manager.Views.Transaction
     public partial class AddTransaction : Form
     {
         public TransactionController transactionController;
+        public EntityController entityController;
+        public IEntityService entityService = new EntityServiceImpl();
         public ITransactionService transactionService = new TransactionServiceImpl();
         DBAccess dBAccess = new DBAccess();
+        TransactionHome _transactionHome;
 
-        public AddTransaction()
+        public AddTransaction(TransactionHome transactionHome)
         {
             InitializeComponent();
+            this._transactionHome = transactionHome;
+            this.FormClosing += new FormClosingEventHandler(this.EditTransactionClosing);
             transactionController = new TransactionController(transactionService);
+            entityController = new EntityController(entityService);
           
 
+        }
+
+        private void EditTransactionClosing(object sender, FormClosingEventArgs e)
+        {
+            _transactionHome.PerformRefresh();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -53,15 +65,17 @@ namespace Expense_Manager.Views.Transaction
             transactionAdd.transactionAmount = transaction_Amount;
             transactionAdd.transactionDate = tansaction_date;
 
-            KeyValuePair<string, int> keyValue = (KeyValuePair<string, int>)comboBox2.SelectedItem;
+            KeyValuePair<string, int> keyValueCategory = (KeyValuePair<string, int>)comboBox2.SelectedItem;
+            KeyValuePair<string, int> keyValueEntity = (KeyValuePair<string, int>)entityComboBox.SelectedItem;
 
-            string key = keyValue.Key;
-            int value = keyValue.Value;
+            int categoryValue = keyValueCategory.Value;
+            int EntityValue = keyValueEntity.Value;
 
-            transactionAdd.categoryId = value;
+
+            transactionAdd.categoryId = categoryValue;
+            transactionAdd.entityId = EntityValue;
 
             object response = transactionController.addTransaction(transactionAdd);
-
 
             if (response is Exception)
             {
@@ -89,7 +103,6 @@ namespace Expense_Manager.Views.Transaction
         {
             String query = "select * from category";
             MySqlDataReader reader = dBAccess.readDatathroughReader(query);
-            List<CategoryRetrieveDto> categories = new List<CategoryRetrieveDto>();
             while (reader.Read())
             {
                 CategoryRetrieveDto category = new CategoryRetrieveDto();
@@ -100,14 +113,31 @@ namespace Expense_Manager.Views.Transaction
 
                 comboBox2.Items.Add(new KeyValuePair<string, int>(reader["categoryName"].ToString(), reader.GetInt32("categoryId")));
 
-                categories.Add(category);
                 comboBox2.DisplayMember = "key";
                 comboBox2.ValueMember = "value";
 
             }
             reader.Close();
 
-           
+            MySqlDataReader entityReader = entityController.getAllEntities();
+
+            while (entityReader.Read())
+            {
+
+                entityComboBox.Items.Add(new KeyValuePair<string, int>(entityReader["entityName"].ToString(), entityReader.GetInt32("entityId")));
+                entityComboBox.DisplayMember = "key";
+                entityComboBox.ValueMember = "value";
+
+            }
+            entityReader.Close();
+
+
+
+        }
+
+        private void entityComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

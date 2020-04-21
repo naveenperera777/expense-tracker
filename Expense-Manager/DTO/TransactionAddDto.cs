@@ -13,5 +13,6 @@ namespace Expense_Manager.DTO
         public DateTime transactionDate { get; set; }
         public string transactionNote { get; set; }
         public int categoryId { get; set; }
+        public int entityId { get; set; }
     }
 }

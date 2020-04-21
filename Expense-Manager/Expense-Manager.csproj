@@ -49,9 +49,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\CategoryController.cs" />
+    <Compile Include="Controller\EntityController.cs" />
+    <Compile Include="Controller\ReportController.cs" />
     <Compile Include="Controller\TransactionController.cs" />
     <Compile Include="DTO\CategoryAddDto.cs" />
     <Compile Include="DTO\CategoryRetrieveDto.cs" />
+    <Compile Include="DTO\EntityAddDto.cs" />
     <Compile Include="DTO\TransactionAddDto.cs" />
     <Compile Include="DTO\TransactionEditDto.cs" />
     <Compile Include="Form1.cs">
@@ -61,6 +64,10 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Transaction\Transaction.cs" />
+    <Compile Include="Services\EntityService\EntityServiceImpl.cs" />
+    <Compile Include="Services\EntityService\IEntityService.cs" />
+    <Compile Include="Services\ReportService\IReportService.cs" />
+    <Compile Include="Services\ReportService\ReportServiceImpl.cs" />
     <Compile Include="Services\TransactionService\ITransactionService.cs" />
     <Compile Include="Services\TransactionService\TransactionServiceImpl.cs" />
     <Compile Include="Views\Category\CategoryView.cs">
@@ -88,6 +95,12 @@
     </Compile>
     <Compile Include="Views\Category\CategoryAdd.Designer.cs">
       <DependentUpon>CategoryAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Report\ReportHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Report\ReportHome.Designer.cs">
+      <DependentUpon>ReportHome.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Transaction\AddTransaction.cs">
       <SubType>Form</SubType>
@@ -133,6 +146,9 @@
     </Compile>
     <EmbeddedResource Include="Views\Category\CategoryAdd.resx">
       <DependentUpon>CategoryAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Report\ReportHome.resx">
+      <DependentUpon>ReportHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Transaction\AddTransaction.resx">
       <DependentUpon>AddTransaction.cs</DependentUpon>

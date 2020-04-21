@@ -23,6 +23,8 @@ namespace Expense_Manager.Views.Transaction
         public ICategoryService categoryService = new CategoryServiceImpl();
         TransactionHome _transactionHome;
         private TransactionEditDto transactionEditDto = new TransactionEditDto();
+
+        private int transactionId;
         public EditTransaction()
         {
             transactionController = new TransactionController(transactionService);
@@ -43,6 +45,7 @@ namespace Expense_Manager.Views.Transaction
             transactionAmount.Text = (transactionEdit.transactionAmount).ToString();
             transactionNote.Text = transactionEdit.transactionNote;
             dateTimePicker1.Value = transactionEdit.transactionDate;
+            this.transactionId = int.Parse(transactionEdit.transactionId);
             comboBox1.SelectedItem = "test1";
 
         }
@@ -88,7 +91,6 @@ namespace Expense_Manager.Views.Transaction
         private void EditTransactionLoad(object sender, EventArgs e)
         {
             MySqlDataReader reader = categoryController.getAllCategories();
-            List<CategoryRetrieveDto> categories = new List<CategoryRetrieveDto>();
             while (reader.Read())
             {
                 comboBox1.Items.Add(new KeyValuePair<string, int>(reader["categoryName"].ToString(), reader.GetInt32("categoryId")));
@@ -98,6 +100,21 @@ namespace Expense_Manager.Views.Transaction
 
             }
             reader.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+                object response = transactionController.deleteTransaction(this.transactionId);
+
+
+            if (response is Exception)
+            {
+                MessageBox.Show("Error Deleting Transaction");
+            }
+            else
+            {
+                MessageBox.Show("Transaction Deleted Successfully");
+            }
         }
     }
 }

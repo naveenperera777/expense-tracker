@@ -33,7 +33,7 @@ namespace Expense_Manager.Views.Transaction
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AddTransaction addTransaction = new AddTransaction();
+            AddTransaction addTransaction = new AddTransaction(this);
             addTransaction.Show();
         }
 

@@ -121,6 +121,30 @@ namespace Expense_Manager.Repository
             }
         }
 
+        public MySqlDataReader readDatathroughReaderWithParams(MySqlCommand command)
+        {
+            //DataReader used to sequentially read data from a data source
+            MySqlDataReader reader;
+
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                {
+                    createConn();
+                }
+
+                command.Connection = connection;
+                command.CommandType = CommandType.Text;
+
+                reader = command.ExecuteReader();
+                return reader;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         public int executeQuery(MySqlCommand dbCommand)
         {

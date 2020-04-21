@@ -19,14 +19,14 @@ namespace Expense_Manager.Services.TransactionService
 
         public object addTransaction(TransactionAddDto transactionAddDto)
         {
-            MySqlCommand insertCommand = new MySqlCommand("insert into Transaction(transactionName, transactionAmount, transactionDate, categoryId, transactionNote) values(@transactionName, @transactionAmount, @transactionDate, @categoryId, @transactionNote)");
+            MySqlCommand insertCommand = new MySqlCommand("insert into Transaction(transactionName, transactionAmount, transactionDate, categoryId, transactionNote, entityId) values(@transactionName, @transactionAmount, @transactionDate, @categoryId, @transactionNote, @entityId)");
 
             insertCommand.Parameters.AddWithValue("@transactionName", transactionAddDto.transactionName);
             insertCommand.Parameters.AddWithValue("@transactionAmount", transactionAddDto.transactionAmount);
             insertCommand.Parameters.AddWithValue("@transactionDate", transactionAddDto.transactionDate);
             insertCommand.Parameters.AddWithValue("@categoryId", transactionAddDto.categoryId);
             insertCommand.Parameters.AddWithValue("@transactionNote", transactionAddDto.transactionNote);
-
+            insertCommand.Parameters.AddWithValue("@entityId", transactionAddDto.entityId);
 
             int row = dBAccess.executeQuery(insertCommand);
 

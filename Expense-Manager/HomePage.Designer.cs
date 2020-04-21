@@ -30,14 +30,14 @@
         {
             this.categoryViewBtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.reportBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // categoryViewBtn
             // 
-            this.categoryViewBtn.Location = new System.Drawing.Point(123, 195);
-            this.categoryViewBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.categoryViewBtn.Location = new System.Drawing.Point(94, 95);
             this.categoryViewBtn.Name = "categoryViewBtn";
-            this.categoryViewBtn.Size = new System.Drawing.Size(327, 118);
+            this.categoryViewBtn.Size = new System.Drawing.Size(245, 96);
             this.categoryViewBtn.TabIndex = 0;
             this.categoryViewBtn.Text = "Category";
             this.categoryViewBtn.UseVisualStyleBackColor = true;
@@ -45,23 +45,32 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(523, 201);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Location = new System.Drawing.Point(377, 95);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(415, 112);
+            this.button2.Size = new System.Drawing.Size(311, 91);
             this.button2.TabIndex = 1;
             this.button2.Text = "Transactions";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // reportBtn
+            // 
+            this.reportBtn.Location = new System.Drawing.Point(94, 221);
+            this.reportBtn.Name = "reportBtn";
+            this.reportBtn.Size = new System.Drawing.Size(245, 96);
+            this.reportBtn.TabIndex = 2;
+            this.reportBtn.Text = "Reports";
+            this.reportBtn.UseVisualStyleBackColor = true;
+            this.reportBtn.Click += new System.EventHandler(this.reportBtn_Click);
+            // 
             // HomePage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.reportBtn);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.categoryViewBtn);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "HomePage";
             this.Text = "HomePage";
             this.ResumeLayout(false);
@@ -72,5 +81,6 @@
 
         private System.Windows.Forms.Button categoryViewBtn;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button reportBtn;
     }
 }
