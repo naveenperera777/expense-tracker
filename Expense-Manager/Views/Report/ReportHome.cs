@@ -21,18 +21,26 @@ namespace Expense_Manager.Views.Report
         {
             InitializeComponent();
             reportController = new ReportController(reportService);
-            MySqlDataReader reader =  reportController.getExpenses();
-            while (reader.Read()) {             
-                textBox1.Text = reader.GetInt32("SUM").ToString();
-            }
-            reader.Close();
+            MySqlDataReader reader =  reportController.getExpenses("default", "defualt");
+           
+                while (reader.Read())
+                {
+                    textBox1.Text = reader.GetInt32("SUM").ToString();
+                }
+                reader.Close();         
 
-            MySqlDataReader incomeReader = reportController.getIncome();
-            while (incomeReader.Read())            {
-
+            MySqlDataReader incomeReader = reportController.getIncome("default", "defualt");
+            while (incomeReader.Read()){
                 textBox2.Text = incomeReader.GetInt32("SUM").ToString();
             }
-            incomeReader.Close();
+            incomeReader.Close();          
+
+            MySqlDataReader categoryTransactions = reportController.getTransactionsByCategory("default", "default");
+            while (categoryTransactions.Read())
+            {
+                chartTransaction.Series["Category"].Points.AddXY(categoryTransactions.GetString("categoryName"), categoryTransactions.GetInt32("transactionSum"));
+            }
+            categoryTransactions.Close();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -46,6 +54,43 @@ namespace Expense_Manager.Views.Report
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void filterBtn_Click(object sender, EventArgs e)
+        {
+            string from = fromDateTimePicker.Value.ToString("yyyy-MM-dd");
+            string to = toDateTimePicker.Value.ToString("yyyy-MM-dd");
+            MySqlDataReader reader = reportController.getExpenses(from, to);
+
+
+            while (reader.Read())
+            {
+                    textBox1.Text = reader.GetInt32("SUM").ToString();
+            }
+            reader.Close();
+            MySqlDataReader readerIncome = reportController.getIncome(from, to);
+
+            while (readerIncome.Read())
+            {
+                textBox2.Text = readerIncome.GetInt32("SUM").ToString();
+            }
+            readerIncome.Close();
+
+            MySqlDataReader categoryTransactions = reportController.getTransactionsByCategory(from, to);
+            chartTransaction.Series["Category"].Points.Clear();
+            while (categoryTransactions.Read())
+            {
+                chartTransaction.Series["Category"].Points.AddXY(categoryTransactions.GetString("categoryName"), categoryTransactions.GetInt32("transactionSum"));
+            }
+            categoryTransactions.Close();
+
+
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+           
 
         }
     }

@@ -9,7 +9,8 @@ namespace Expense_Manager.Services.ReportService
 {
     public interface IReportService
     {
-        MySqlDataReader getExpensesSummary();
-        MySqlDataReader getIncomeSummary();
+        MySqlDataReader getExpensesSummary(string from, string to);
+        MySqlDataReader getIncomeSummary(string from, string to);
+        MySqlDataReader getTransactionsByCategory(string from, string to);
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Expense_Manager.Services.ReportService
 {
@@ -13,31 +14,79 @@ namespace Expense_Manager.Services.ReportService
     {
         DBAccess dBAccess = new DBAccess();
 
-        public MySqlDataReader getExpensesSummary()
+        public MySqlDataReader getExpensesSummary(string from, string to)
         {
-            String query = "SELECT SUM(transactionAmount) as SUM FROM transaction AS t INNER JOIN category AS c ON t.categoryId=c.categoryId WHERE c.categoryType=@expense AND t.transactionDate BETWEEN @from AND @to";
-            MySqlCommand getExpenses = new MySqlCommand(query);
-            getExpenses.Parameters.AddWithValue("@expense", "expense");
-            getExpenses.Parameters.AddWithValue("@from", "2020-04-20");
-            getExpenses.Parameters.AddWithValue("@to", "2020-04-22");
-            MySqlDataReader reader = dBAccess.readDatathroughReaderWithParams(getExpenses);
-            
-            return reader;
+            string query;
+            if (!from.Equals("default"))
+            {
+                query = "SELECT SUM(transactionAmount) as SUM FROM transaction AS t INNER JOIN category AS c ON t.categoryId=c.categoryId WHERE c.categoryType=@expense AND t.transactionDate BETWEEN @from AND @to";
+                MySqlCommand getExpenses = new MySqlCommand(query);
+                getExpenses.Parameters.AddWithValue("@expense", "expense");
+                getExpenses.Parameters.AddWithValue("@from", from);
+                getExpenses.Parameters.AddWithValue("@to", to);
+                MySqlDataReader reader = dBAccess.readDatathroughReaderWithParams(getExpenses);
+
+                return reader;
+            }
+            else
+            {
+                query = "SELECT SUM(transactionAmount) as SUM FROM transaction AS t INNER JOIN category AS c ON t.categoryId=c.categoryId WHERE c.categoryType=@expense";
+                MySqlCommand getExpenses = new MySqlCommand(query);
+                getExpenses.Parameters.AddWithValue("@expense", "expense");
+                MySqlDataReader reader = dBAccess.readDatathroughReaderWithParams(getExpenses);
+
+                return reader;
+            }
 
           
         }
 
-        public MySqlDataReader getIncomeSummary()
+        public MySqlDataReader getIncomeSummary(string from, string to)
         {
-            String query = "SELECT SUM(transactionAmount) as SUM FROM transaction AS t INNER JOIN category AS c ON t.categoryId=c.categoryId WHERE c.categoryType=@income AND t.transactionDate BETWEEN @from AND @to";
-            MySqlCommand getExpenses = new MySqlCommand(query);
-            getExpenses.Parameters.AddWithValue("@income", "income");
-            getExpenses.Parameters.AddWithValue("@from", "2020-04-20");
-            getExpenses.Parameters.AddWithValue("@to", "2020-04-22");
-            MySqlDataReader reader = dBAccess.readDatathroughReaderWithParams(getExpenses);
+            string query;
+            if (!from.Equals("default"))
+            {
+                query = "SELECT SUM(transactionAmount) as SUM FROM transaction AS t INNER JOIN category AS c ON t.categoryId=c.categoryId WHERE c.categoryType=@income AND t.transactionDate BETWEEN @from AND @to";
+                MySqlCommand getIncome = new MySqlCommand(query);
+                getIncome.Parameters.AddWithValue("@income", "income");
+                getIncome.Parameters.AddWithValue("@from", from);
+                getIncome.Parameters.AddWithValue("@to",to);
+                MySqlDataReader reader = dBAccess.readDatathroughReaderWithParams(getIncome);
 
-            return reader;
+                return reader;
+            } else
+            {
+                query = "SELECT SUM(transactionAmount) as SUM FROM transaction AS t INNER JOIN category AS c ON t.categoryId=c.categoryId WHERE c.categoryType=@income";
+                MySqlCommand getIncome = new MySqlCommand(query);
+                getIncome.Parameters.AddWithValue("@income", "income");
+                MySqlDataReader reader = dBAccess.readDatathroughReaderWithParams(getIncome);
 
+                return reader;
+            }
+
+
+        }
+
+        public MySqlDataReader getTransactionsByCategory(string from, string to)
+        {
+            string sql;
+            if (from.Equals("default"))
+            {
+                sql = "SELECT *, SUM(t.transactionAmount) as transactionSum FROM transaction AS t INNER JOIN category AS c ON t.categoryId=c.categoryId GROUP BY c.categoryId";
+                MySqlCommand transactions = new MySqlCommand(sql);
+                MySqlDataReader reader = dBAccess.readDatathroughReaderWithParams(transactions);
+
+                return reader;
+            } else
+            {
+                sql = "SELECT *, SUM(t.transactionAmount) as transactionSum FROM transaction AS t INNER JOIN category AS c ON t.categoryId=c.categoryId WHERE t.transactionDate BETWEEN @from AND @to GROUP BY c.categoryId";
+                MySqlCommand transactions = new MySqlCommand(sql);
+                transactions.Parameters.AddWithValue("@from", from);
+                transactions.Parameters.AddWithValue("@to", to);
+                MySqlDataReader reader = dBAccess.readDatathroughReaderWithParams(transactions);
+
+                return reader;
+            }
 
         }
     }

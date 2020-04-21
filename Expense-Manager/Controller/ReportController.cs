@@ -18,14 +18,19 @@ namespace Expense_Manager.Controller
             this.reportService = reportService;
         }
 
-        public MySqlDataReader getExpenses()
+        public MySqlDataReader getExpenses(string from, string to)
         {
-            return reportService.getExpensesSummary();
+            return reportService.getExpensesSummary(from, to);
         }
 
-        public MySqlDataReader getIncome()
+        public MySqlDataReader getIncome(string from, string to)
         {
-            return reportService.getIncomeSummary();
+            return reportService.getIncomeSummary(from, to);
+        }
+
+        public MySqlDataReader getTransactionsByCategory(string from, string to)
+        {
+            return reportService.getTransactionsByCategory(from, to);
         }
     }
 }
