@@ -74,6 +74,12 @@ namespace Expense_Manager.Views.Transaction
             editTransaction.Show();
            
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            BulkTransaction bulkTransaction = new BulkTransaction();
+            bulkTransaction.Show();
+        }
     }
 }
 

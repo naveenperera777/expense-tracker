@@ -52,6 +52,7 @@
             this.label1.Size = new System.Drawing.Size(94, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Transaction Name";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -73,6 +74,7 @@
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Amount";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -83,11 +85,12 @@
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Timestamp";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // transactionName
             // 
             this.transactionName.Location = new System.Drawing.Point(258, 44);
-            this.transactionName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.transactionName.Margin = new System.Windows.Forms.Padding(2);
             this.transactionName.Name = "transactionName";
             this.transactionName.Size = new System.Drawing.Size(116, 20);
             this.transactionName.TabIndex = 4;
@@ -97,7 +100,7 @@
             // 
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(258, 75);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(116, 21);
             this.comboBox2.TabIndex = 6;
@@ -106,7 +109,7 @@
             // amount
             // 
             this.amount.Location = new System.Drawing.Point(258, 163);
-            this.amount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.amount.Margin = new System.Windows.Forms.Padding(2);
             this.amount.Name = "amount";
             this.amount.Size = new System.Drawing.Size(116, 20);
             this.amount.TabIndex = 7;
@@ -115,10 +118,11 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(258, 202);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(151, 20);
             this.dateTimePicker1.TabIndex = 8;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // label5
             // 
@@ -129,19 +133,21 @@
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 9;
             this.label5.Text = "Notes";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // notes
             // 
             this.notes.Location = new System.Drawing.Point(258, 257);
-            this.notes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.notes.Margin = new System.Windows.Forms.Padding(2);
             this.notes.Name = "notes";
             this.notes.Size = new System.Drawing.Size(116, 20);
             this.notes.TabIndex = 10;
+            this.notes.TextChanged += new System.EventHandler(this.notes_TextChanged);
             // 
             // submit
             // 
             this.submit.Location = new System.Drawing.Point(200, 305);
-            this.submit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.submit.Margin = new System.Windows.Forms.Padding(2);
             this.submit.Name = "submit";
             this.submit.Size = new System.Drawing.Size(56, 19);
             this.submit.TabIndex = 11;
@@ -157,6 +163,7 @@
             this.label6.Size = new System.Drawing.Size(33, 13);
             this.label6.TabIndex = 12;
             this.label6.Text = "Entity";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // entityComboBox
             // 
@@ -185,7 +192,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddTransaction";
             this.Text = "AddTransaction";
             this.Load += new System.EventHandler(this.AddTransaction_Load);

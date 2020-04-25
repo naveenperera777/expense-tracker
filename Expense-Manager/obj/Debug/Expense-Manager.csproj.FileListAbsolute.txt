@@ -22,3 +22,4 @@ C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense_Manage
 C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense_Manager.Views.Transaction.AllTransactions.resources
 C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense_Manager.Views.Transaction.EditTransaction.resources
 C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense_Manager.Views.Report.ReportHome.resources
+C:\Users\Naveen\Desktop\Expense-Manager\Expense-Manager\obj\Debug\Expense_Manager.Views.Transaction.BulkTransaction.resources
