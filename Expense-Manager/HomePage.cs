@@ -1,4 +1,5 @@
-﻿using Expense_Manager.Views.Report;
+﻿using Expense_Manager.Views.Prediction;
+using Expense_Manager.Views.Report;
 using Expense_Manager.Views.Transaction;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,12 @@ namespace Expense_Manager
         {
             ReportHome reportHome = new ReportHome();
             reportHome.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PredictionHome predictionHome = new PredictionHome();
+            predictionHome.Show();
         }
     }
 }

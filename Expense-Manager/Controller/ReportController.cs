@@ -32,5 +32,20 @@ namespace Expense_Manager.Controller
         {
             return reportService.getTransactionsByCategory(from, to);
         }
+
+        public MySqlDataReader getMinDate()
+        {
+            return reportService.getMinDate();
+        }
+
+        public MySqlDataReader getMaxDate()
+        {
+            return reportService.getMaxDate();
+        }
+
+        public double getTotalTransactionAmount()
+        {
+            return reportService.getTotalTransactionAmount();
+        }
     }
 }

@@ -12,5 +12,10 @@ namespace Expense_Manager.Services.ReportService
         MySqlDataReader getExpensesSummary(string from, string to);
         MySqlDataReader getIncomeSummary(string from, string to);
         MySqlDataReader getTransactionsByCategory(string from, string to);
+        MySqlDataReader getMinDate();
+        MySqlDataReader getMaxDate();
+        double getTotalTransactionAmount();
+
+
     }
 }

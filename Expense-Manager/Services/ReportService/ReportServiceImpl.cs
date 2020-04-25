@@ -67,6 +67,46 @@ namespace Expense_Manager.Services.ReportService
 
         }
 
+        public MySqlDataReader getMaxDate()
+        {
+            string sqlMax = "SELECT  MAX(transactionDate) as MAX FROM transaction";
+
+            MySqlCommand maxDate = new MySqlCommand(sqlMax);
+
+            MySqlDataReader reader = dBAccess.readDatathroughReaderWithParams(maxDate);
+
+            return reader;
+        }
+
+        public MySqlDataReader getMinDate()
+        {
+            string sqlMin = "SELECT  MIN(transactionDate) as MIN FROM transaction";
+
+            MySqlCommand getMinDate = new MySqlCommand(sqlMin);
+
+            MySqlDataReader reader = dBAccess.readDatathroughReaderWithParams(getMinDate);
+
+            return reader;
+           
+        }
+
+        public double getTotalTransactionAmount()
+        {
+            string sql = "SELECT SUM(transactionAmount) as TOTAL FROM transaction";
+
+            MySqlCommand totalCommand = new MySqlCommand(sql);
+
+            MySqlDataReader reader = dBAccess.readDatathroughReaderWithParams(totalCommand);
+            double amount = 0.00;
+            while (reader.Read())
+            {
+                amount = reader.GetDouble("TOTAL");             
+
+            }
+            reader.Close();
+            return amount;
+        }
+
         public MySqlDataReader getTransactionsByCategory(string from, string to)
         {
             string sql;
