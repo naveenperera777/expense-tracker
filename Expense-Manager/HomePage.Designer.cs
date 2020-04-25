@@ -85,6 +85,7 @@
             this.Controls.Add(this.categoryViewBtn);
             this.Name = "HomePage";
             this.Text = "HomePage";
+            this.Load += new System.EventHandler(this.HomePage_Load);
             this.ResumeLayout(false);
 
         }

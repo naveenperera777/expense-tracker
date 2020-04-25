@@ -6,10 +6,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace Expense_Manager.Views
 {
@@ -97,6 +99,56 @@ namespace Expense_Manager.Views
         {
 
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string categoryName = categoryBox.Text;
+            double limit = double.Parse(categoryLimit.Text);
+            KeyValuePair<string, int> keyValue = (KeyValuePair<string, int>)comboBox1.SelectedItem;
+
+            string key = keyValue.Key;
+            int value = keyValue.Value;
+
+            if (categoryName.Equals(""))
+            {
+                MessageBox.Show("Please Enter Category Name");
+            }
+
+            CategoryAddDto categoryAdd = new CategoryAddDto();
+            categoryAdd.categoryName = categoryName;
+            categoryAdd.categoryType = key;
+            categoryAdd.categoryLimit = limit;
+         
+
+            XmlSerializer serializer = new XmlSerializer(typeof(CategoryAddDto));
+
+            using (FileStream fs = new FileStream(Environment.CurrentDirectory + "\\category.xml", FileMode.Create, FileAccess.Write))
+            {
+                serializer.Serialize(fs, categoryAdd);
+                MessageBox.Show("Xml File Created", "Success");
+              
+            }
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(CategoryAddDto));
+            CategoryAddDto categoryAddDto = new CategoryAddDto();
+            using (FileStream fs = new FileStream(Environment.CurrentDirectory + "\\category.xml", FileMode.Open, FileAccess.Read))
+            {
+                categoryAddDto = serializer.Deserialize(fs) as CategoryAddDto;
+                categoryBox.Text = categoryAddDto.categoryName;
+                categoryLimit.Text = categoryAddDto.categoryLimit.ToString();
+
+                comboBox1.Items.Add(new KeyValuePair<string, int>("Income", 0));
+                comboBox1.Items.Add(new KeyValuePair<string, int>("Expense", 1));
+
+                comboBox1.DisplayMember = "key";
+                comboBox1.ValueMember = "value";
+
+            }
         }
     }
 }

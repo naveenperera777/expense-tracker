@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<CategoryAddDto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <categoryName>newwwwwwwwwwwww</categoryName>
+  <categoryType>Income</categoryType>
+  <categoryLimit>34434</categoryLimit>
+</CategoryAddDto>

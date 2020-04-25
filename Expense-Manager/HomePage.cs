@@ -43,5 +43,10 @@ namespace Expense_Manager
             PredictionHome predictionHome = new PredictionHome();
             predictionHome.Show();
         }
+
+        private void HomePage_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
