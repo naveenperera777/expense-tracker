@@ -54,15 +54,16 @@
     <Compile Include="Controller\ReportController.cs" />
     <Compile Include="Controller\TransactionController.cs" />
     <Compile Include="DTO\CategoryAddDto.cs" />
+    <Compile Include="DTO\CategoryEditDto.cs" />
     <Compile Include="DTO\CategoryRetrieveDto.cs" />
     <Compile Include="DTO\EntityAddDto.cs" />
     <Compile Include="DTO\TransactionAddDto.cs" />
     <Compile Include="DTO\TransactionEditDto.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="CategoryBase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="CategoryBase.Designer.cs">
+      <DependentUpon>CategoryBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Transaction\Transaction.cs" />
     <Compile Include="Services\EntityService\EntityServiceImpl.cs" />
@@ -96,6 +97,12 @@
     </Compile>
     <Compile Include="Views\Category\CategoryAdd.Designer.cs">
       <DependentUpon>CategoryAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Category\UpdateCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Category\UpdateCategory.Designer.cs">
+      <DependentUpon>UpdateCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Prediction\PredictionHome.cs">
       <SubType>Form</SubType>
@@ -142,8 +149,8 @@
     <EmbeddedResource Include="Views\Category\CategoryView.resx">
       <DependentUpon>CategoryView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="CategoryBase.resx">
+      <DependentUpon>CategoryBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>
@@ -159,6 +166,9 @@
     </Compile>
     <EmbeddedResource Include="Views\Category\CategoryAdd.resx">
       <DependentUpon>CategoryAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Category\UpdateCategory.resx">
+      <DependentUpon>UpdateCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Prediction\PredictionHome.resx">
       <DependentUpon>PredictionHome.cs</DependentUpon>

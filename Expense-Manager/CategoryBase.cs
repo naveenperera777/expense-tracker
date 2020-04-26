@@ -14,10 +14,11 @@ using Expense_Manager.DTO;
 using Expense_Manager.Controller;
 using Expense_Manager.Services.CategoryService;
 using Expense_Manager.Views;
+using Expense_Manager.Views.Category;
 
 namespace Expense_Manager
 {
-    public partial class Form1 : Form
+    public partial class CategoryBase : Form
     {
         public CategoryController categoryController;
         public ICategoryService categoryService = new CategoryServiceImpl();
@@ -25,21 +26,23 @@ namespace Expense_Manager
         DataTable dataTable = new DataTable();
 
         DBAccess dBAccess = new DBAccess();
-        public Form1(CategoryController _categoryController)
+        public CategoryBase(CategoryController _categoryController)
         {
             InitializeComponent();
-            categoryController = _categoryController;
             string sql = "select * from Category";
             dBAccess.readDatathroughAdapter(sql, dataTable);
             dataGridView1.DataSource = dataTable;
             dBAccess.closeConn();
-
         }
 
-        public Form1()
+        public CategoryBase()
         {
             this.categoryController = new CategoryController(categoryService);
             InitializeComponent();
+            string sql = "select * from Category";
+            dBAccess.readDatathroughAdapter(sql, dataTable);
+            dataGridView1.DataSource = dataTable;
+            dBAccess.closeConn();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -72,7 +75,19 @@ namespace Expense_Manager
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            CategoryEditDto categoryEditDto = new CategoryEditDto();
+            string categoryType = this.dataGridView1.CurrentRow.Cells["categoryType"].Value.ToString();
+            string categoryName = this.dataGridView1.CurrentRow.Cells["categoryName"].Value.ToString();
+            int categoryId = int.Parse(this.dataGridView1.CurrentRow.Cells["categoryId"].Value.ToString());
+            double categoryLimit = double.Parse(this.dataGridView1.CurrentRow.Cells["categoryLimit"].Value.ToString());
 
+            categoryEditDto.categoryId = categoryId;
+            categoryEditDto.categoryName = categoryName;
+            categoryEditDto.categoryType = categoryType;
+            categoryEditDto.categoryLimit = categoryLimit;
+            UpdateCategory updateCategory = new UpdateCategory(categoryEditDto);
+
+            updateCategory.Show();
         }
 
         private void button2_Click_1(object sender, EventArgs e)

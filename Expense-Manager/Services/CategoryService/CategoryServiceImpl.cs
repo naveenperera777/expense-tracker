@@ -44,5 +44,27 @@ namespace Expense_Manager.Services.CategoryService
             MySqlDataReader reader = dBAccess.readDatathroughReader(query);
             return reader;
         }
+
+        public object updateCategory(CategoryEditDto categoryEditDto)
+        {
+            string sql = "update category set categoryName=@categoryName, categoryType=@categoryType, categoryLimit=@categoryLimit  where categoryId=@categoryId";
+            MySqlCommand updateCategory = new MySqlCommand(sql);
+            updateCategory.Parameters.AddWithValue("@categoryName", categoryEditDto.categoryName);
+            updateCategory.Parameters.AddWithValue("@categoryType", categoryEditDto.categoryType);
+            updateCategory.Parameters.AddWithValue("@categoryLimit", categoryEditDto.categoryLimit);
+            updateCategory.Parameters.AddWithValue("@categoryId", categoryEditDto.categoryId);
+
+
+            int row = dBAccess.executeQuery(updateCategory);
+            if (row < 0)
+            {
+                throw new Exception();
+            }
+            else
+            {
+                SuccessResponse successResponse = new SuccessResponse();
+                return successResponse;
+            }
+        }
     }
 }

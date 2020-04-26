@@ -32,5 +32,11 @@ namespace Expense_Manager.Controller
             MySqlDataReader response = categoryService.getAllCategories();
             return response;
         }
+
+        public object updateCategory(CategoryEditDto categoryEditDto)
+        {
+            object response = categoryService.updateCategory(categoryEditDto);
+            return response;
+        }
     }
 }

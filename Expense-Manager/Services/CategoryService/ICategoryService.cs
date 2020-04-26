@@ -12,5 +12,7 @@ namespace Expense_Manager.Services.CategoryService
     {
         object addCategory(CategoryAddDto categoryAddDto);
         MySqlDataReader getAllCategories();
+
+        object updateCategory(CategoryEditDto categoryEditDto);
     }
 }

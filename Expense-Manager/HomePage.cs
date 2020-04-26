@@ -22,7 +22,7 @@ namespace Expense_Manager
 
         private void categoryViewBtn_Click(object sender, EventArgs e)
         {
-            Form1 form = new Form1();
+            CategoryBase form = new CategoryBase();
             form.Show();
         }
 

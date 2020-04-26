@@ -116,7 +116,6 @@ namespace Expense_Manager.Services.TransactionService
                 return successResponse;
             }
 
-            throw new NotImplementedException();
         }
     }
 }
