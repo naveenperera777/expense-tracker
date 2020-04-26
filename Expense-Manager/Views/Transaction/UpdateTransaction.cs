@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace Expense_Manager.Views.Transaction
 {
-    public partial class EditTransaction : Form
+    public partial class UpdateTransaction : Form
     {
         public TransactionController transactionController;
         public CategoryController categoryController;
@@ -25,25 +25,23 @@ namespace Expense_Manager.Views.Transaction
         private TransactionEditDto transactionEditDto = new TransactionEditDto();
 
         private int transactionId;
-        public EditTransaction()
+        public UpdateTransaction()
         {
             transactionController = new TransactionController(transactionService);
             categoryController = new CategoryController(categoryService);
             InitializeComponent();
         }
 
-        public EditTransaction(TransactionHome transactionHome, TransactionEditDto transactionEdit)
+        public UpdateTransaction(TransactionHome transactionHome, TransactionEditDto transactionEdit)
         {
             InitializeComponent();
             transactionController = new TransactionController(transactionService);
             categoryController = new CategoryController(categoryService);
             _transactionHome = transactionHome;
-          //  this.FormClosing += new FormClosingEventHandler(this.EditTransactionClosing);
+            this.FormClosing += new FormClosingEventHandler(this.EditTransactionClosing);
 
             this.transactionEditDto = transactionEdit;
-            transactionName.Text = transactionEdit.transactionName;
-            transactionAmount.Text = (transactionEdit.transactionAmount).ToString();
-            transactionNote.Text = transactionEdit.transactionNote;
+           
             dateTimePicker1.Value = transactionEdit.transactionDate;
             this.transactionId = int.Parse(transactionEdit.transactionId);
             MySqlDataReader reader = categoryController.getAllCategories();
@@ -60,29 +58,25 @@ namespace Expense_Manager.Views.Transaction
 
         }
 
+
         private void EditTransactionClosing(object sender, FormClosingEventArgs e)
         {
             _transactionHome.PerformRefresh();
         }
 
-
-        private void refreshTransactionList()
+        private void updateTransactionList()
         {
             _transactionHome.PerformRefresh();
         }
 
-
         private void transactionName_TextChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void Submit_Click(object sender, EventArgs e)
         {
-            transactionEditDto.transactionName = transactionName.Text;
-            transactionEditDto.transactionAmount = Double.Parse(transactionAmount.Text);
-            transactionEditDto.transactionNote = transactionNote.Text;
-            transactionEditDto.transactionDate = dateTimePicker1.Value;
+          
             KeyValuePair<string, int> keyValue = (KeyValuePair<string, int>)comboBox1.SelectedItem;
             transactionEditDto.categoryId = keyValue.Value;
 
@@ -96,7 +90,7 @@ namespace Expense_Manager.Views.Transaction
             {
                 MessageBox.Show("Transaction Updated Successfully");
             }
-            this.refreshTransactionList();
+            this.updateTransactionList();
             this.Hide();
         }
 
@@ -107,12 +101,12 @@ namespace Expense_Manager.Views.Transaction
 
         private void EditTransactionLoad(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-                object response = transactionController.deleteTransaction(this.transactionId);
+            object response = transactionController.deleteTransaction(this.transactionId);
 
 
             if (response is Exception)
@@ -123,8 +117,14 @@ namespace Expense_Manager.Views.Transaction
             {
                 MessageBox.Show("Transaction Deleted Successfully");
             }
-            this.refreshTransactionList();
+            this.updateTransactionList();
             this.Hide();
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void Cancel_Click(object sender, EventArgs e)
@@ -132,7 +132,7 @@ namespace Expense_Manager.Views.Transaction
             this.Hide();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void UpdateTransaction_Load(object sender, EventArgs e)
         {
 
         }

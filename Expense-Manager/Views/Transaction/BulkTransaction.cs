@@ -25,13 +25,15 @@ namespace Expense_Manager.Views.Transaction
         public EntityController entityController;
         public IEntityService entityService = new EntityServiceImpl();
         private int transactionCount = 0;
+        TransactionHome _transactionHome;
 
-        public BulkTransaction()
+        public BulkTransaction(TransactionHome transactionHome)
         {
             InitializeComponent();
             transactionController = new TransactionController(transactionService);
             categoryController = new CategoryController(categoryService);
             entityController = new EntityController(entityService);
+            _transactionHome = transactionHome;
 
         }
 
@@ -40,14 +42,25 @@ namespace Expense_Manager.Views.Transaction
              
         }
 
+        private void refreshTransactionList()
+        {
+            _transactionHome.PerformRefresh();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             transactionCount = int.Parse(numberTextBox.Text);
             if (transactionCount < 1)
             {
                 MessageBox.Show("Transaction Count Cannot be less than one");
+                return;
             }
-            int startNameLabel = 10;
+            if (transactionCount > 6)
+            {
+                MessageBox.Show("Transaction Count Cannot be greater than six");
+                return;
+            }
+            int startNameLabel = 0;
             int startText = 100;
             int startCategoryLabel = 200;
             int startCategoryCombo = 300;
@@ -269,9 +282,13 @@ namespace Expense_Manager.Views.Transaction
 
             }
             MessageBox.Show("Bulk Transactions Added Successfully");
+            this.refreshTransactionList();
             this.Hide();
         }
 
-
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

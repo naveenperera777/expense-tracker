@@ -42,6 +42,11 @@ namespace Expense_Manager.Views.Transaction
             _transactionHome.PerformRefresh();
         }
 
+        private void refreshTransactionList()
+        {
+            _transactionHome.PerformRefresh();
+        }
+
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -85,6 +90,8 @@ namespace Expense_Manager.Views.Transaction
             {
                 MessageBox.Show("Transaction Added Successfully");
             }
+            this.refreshTransactionList();
+            this.Hide();
 
 
         }
@@ -173,6 +180,11 @@ namespace Expense_Manager.Views.Transaction
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

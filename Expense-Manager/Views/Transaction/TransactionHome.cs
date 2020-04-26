@@ -57,6 +57,7 @@ namespace Expense_Manager.Views.Transaction
         {
             string name = this.dataGridView1.CurrentRow.Cells["transactionName"].Value.ToString();
             string id = this.dataGridView1.CurrentRow.Cells["transactionId"].Value.ToString();
+            string categoryName = this.dataGridView1.CurrentRow.Cells["categoryName"].Value.ToString();
             double amount = double.Parse(this.dataGridView1.CurrentRow.Cells["transactionAmount"].Value.ToString());
             int categoryId = int.Parse(this.dataGridView1.CurrentRow.Cells["categoryId"].Value.ToString());
             string note = this.dataGridView1.CurrentRow.Cells["transactionNote"].Value.ToString();
@@ -69,6 +70,7 @@ namespace Expense_Manager.Views.Transaction
             transactionEditDto.transactionNote = note;
             transactionEditDto.transactionName = name;
             transactionEditDto.transactionDate = date;
+            transactionEditDto.categoryName = categoryName;
 
             EditTransaction editTransaction = new EditTransaction(this, transactionEditDto);
             editTransaction.Show();
@@ -77,7 +79,7 @@ namespace Expense_Manager.Views.Transaction
 
         private void button3_Click(object sender, EventArgs e)
         {
-            BulkTransaction bulkTransaction = new BulkTransaction();
+            BulkTransaction bulkTransaction = new BulkTransaction(this);
             bulkTransaction.Show();
         }
     }

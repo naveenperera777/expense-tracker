@@ -84,7 +84,8 @@ namespace Expense_Manager.Services.TransactionService
 
         public object getAllTransactions(DataTable dataTable)
         {
-            string sql = "select `transactionId`, `transactionName`, `transactionAmount`, `transactionNote`, `categoryId`, CAST(`transactionDate` AS DATETIME) AS transactionDate  from transaction";
+            string sql = "select t.transactionId , t.transactionName, t.transactionAmount, t.transactionNote, t.categoryId, c.categoryName, CAST(t.transactionDate AS DATETIME) AS transactionDate FROM transaction AS t INNER JOIN category AS c ON t.categoryId = c.categoryId";
+            //string sql = "select t.transactionId , t.transactionName, t.transactionAmount, t.transactionNote, t.categoryId, c.categoryName FROM transaction as t INNER JOIN category AS c ON t.categoryId = c.categoryId";
             dBAccess.readDatathroughAdapter(sql, dataTable);
             dBAccess.closeConn();
 
