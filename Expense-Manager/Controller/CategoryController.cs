@@ -3,6 +3,7 @@ using Expense_Manager.Services.CategoryService;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,18 @@ namespace Expense_Manager.Controller
         public object updateCategory(CategoryEditDto categoryEditDto)
         {
             object response = categoryService.updateCategory(categoryEditDto);
+            return response;
+        }
+
+        public object getAllCategoriesAsTable(DataTable dataTable)
+        {
+            object response = categoryService.getAllCategoriesAsTable(dataTable);
+            return response;
+        }
+
+        public object deleteCategory(int categoryId)
+        {
+            object response = categoryService.deleteCategory(categoryId);
             return response;
         }
     }

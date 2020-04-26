@@ -1,5 +1,6 @@
 ﻿using Expense_Manager.Controller;
 using Expense_Manager.DTO;
+using Expense_Manager.Response;
 using Expense_Manager.Services.CategoryService;
 using MySql.Data.MySqlClient;
 using System;
@@ -18,23 +19,28 @@ namespace Expense_Manager.Views.Category
     {
         public CategoryController categoryController;
         public ICategoryService categoryService = new CategoryServiceImpl();
-        public UpdateCategory(CategoryEditDto categoryEditDto)
+        private int categoryId;
+        CategoryBase _categoryBase;
+        public UpdateCategory(CategoryEditDto categoryEditDto, CategoryBase categoryBase)
         {
             InitializeComponent();
+            this._categoryBase = categoryBase;
             categoryController = new CategoryController(categoryService);
             categoryName.Text = categoryEditDto.categoryName;
             categoryLimit.Text = categoryEditDto.categoryLimit.ToString();
-            MySqlDataReader reader = categoryController.getAllCategories();
-            while (reader.Read())
-            {
-                comboBox1.Items.Add(new KeyValuePair<string, int>(reader["categoryName"].ToString(), reader.GetInt32("categoryId")));
+            categoryId = categoryEditDto.categoryId;
+           
+            comboBox1.Items.Add(new KeyValuePair<string, int>("Income", 0));
+            comboBox1.Items.Add(new KeyValuePair<string, int>("Expense", 1));
 
-                comboBox1.DisplayMember = "key";
-                comboBox1.ValueMember = "value";
+            comboBox1.DisplayMember = "key";
+            comboBox1.ValueMember = "value";
+            comboBox1.Text = categoryEditDto.categoryType;
+        }
 
-            }
-            reader.Close();
-            comboBox1.Text = categoryEditDto.categoryName;
+        private void refreshTransactionList()
+        {
+            _categoryBase.PerformRefresh();
         }
 
         private void UpdateCategory_Load(object sender, EventArgs e)
@@ -44,7 +50,40 @@ namespace Expense_Manager.Views.Category
 
         private void button1_Click(object sender, EventArgs e)
         {
+            CategoryEditDto categoryEditDto = new CategoryEditDto();
+            categoryEditDto.categoryId = this.categoryId;
+            categoryEditDto.categoryName = categoryName.Text;
+            KeyValuePair<string, int> keyValue = (KeyValuePair<string, int>)comboBox1.SelectedItem;
+            categoryEditDto.categoryType = keyValue.Key;
+            categoryEditDto.categoryLimit = double.Parse(categoryLimit.Text);
+            object response = categoryController.updateCategory(categoryEditDto);
 
+            if (response is Exception)
+            {
+                MessageBox.Show("Error Updating Transaction");
+            }
+            else
+            {
+                MessageBox.Show("Transaction Updated Successfully");
+            }
+            this.refreshTransactionList();
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            object response = categoryController.deleteCategory(categoryId);
+
+            if (response is Exception)
+            {
+                MessageBox.Show("Error Deleting Category");
+            }
+            else
+            {
+                MessageBox.Show("Transaction Deleted Successfully");
+            }
+            this.refreshTransactionList();
+            this.Hide();
         }
     }
 }

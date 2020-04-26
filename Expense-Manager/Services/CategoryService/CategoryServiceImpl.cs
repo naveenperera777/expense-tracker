@@ -8,6 +8,7 @@ using MySql.Data.MySqlClient;
 using Expense_Manager.Repository;
 using Expense_Manager.DTO;
 using Expense_Manager.Response;
+using System.Data;
 
 namespace Expense_Manager.Services.CategoryService
 {
@@ -38,11 +39,40 @@ namespace Expense_Manager.Services.CategoryService
           
         }
 
+        public object deleteCategory(int categoryId)
+        {
+            string sql = "delete from category where categoryId=@categoryId";
+            MySqlCommand deleteCategory = new MySqlCommand(sql);
+            deleteCategory.Parameters.AddWithValue("@categoryId", categoryId);
+            int row = dBAccess.executeQuery(deleteCategory);
+
+            if (row < 0)
+            {
+                throw new Exception();
+            }
+            else
+            {
+                SuccessResponse successResponse = new SuccessResponse();
+                return successResponse;
+            }
+            throw new NotImplementedException();
+        }
+
         public MySqlDataReader getAllCategories()
         {
             String query = "select * from category";
             MySqlDataReader reader = dBAccess.readDatathroughReader(query);
             return reader;
+        }
+
+        public object getAllCategoriesAsTable(DataTable dataTable)
+        {
+            String query = "select * from category";
+            dBAccess.readDatathroughAdapter(query, dataTable);
+            dBAccess.closeConn();
+
+            return dataTable;
+
         }
 
         public object updateCategory(CategoryEditDto categoryEditDto)

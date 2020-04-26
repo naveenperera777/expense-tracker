@@ -45,6 +45,14 @@ namespace Expense_Manager
             dBAccess.closeConn();
         }
 
+        public void PerformRefresh()
+        {
+            dataGridView1.DataSource = null;
+            DataTable UpdatedTable = new DataTable();
+            object newCategories = categoryController.getAllCategoriesAsTable(UpdatedTable);
+            dataGridView1.DataSource = newCategories;
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -52,7 +60,7 @@ namespace Expense_Manager
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CategoryAdd categoryAddView = new CategoryAdd();
+            CategoryAdd categoryAddView = new CategoryAdd(this);
             categoryAddView.Show();
 
             
@@ -85,7 +93,7 @@ namespace Expense_Manager
             categoryEditDto.categoryName = categoryName;
             categoryEditDto.categoryType = categoryType;
             categoryEditDto.categoryLimit = categoryLimit;
-            UpdateCategory updateCategory = new UpdateCategory(categoryEditDto);
+            UpdateCategory updateCategory = new UpdateCategory(categoryEditDto, this);
 
             updateCategory.Show();
         }

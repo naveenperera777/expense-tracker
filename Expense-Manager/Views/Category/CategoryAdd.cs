@@ -19,13 +19,20 @@ namespace Expense_Manager.Views
     {
         public CategoryController categoryController;
         public ICategoryService categoryService = new CategoryServiceImpl();
+        CategoryBase _categoryBase;
 
-        public CategoryAdd()
+        public CategoryAdd(CategoryBase categoryBase)
         {
-            this.categoryController = new CategoryController(categoryService);
             InitializeComponent();
+            this._categoryBase = categoryBase;
+            this.categoryController = new CategoryController(categoryService);
 
           
+        }
+
+        private void refreshTransactionList()
+        {
+            _categoryBase.PerformRefresh();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -45,11 +52,11 @@ namespace Expense_Manager.Views
 
         private void CategoryAdd_Load(object sender, EventArgs e)
         {
-            comboBox1.Items.Add(new KeyValuePair<string, int>("Income", 0));
-            comboBox1.Items.Add(new KeyValuePair<string, int>("Expense", 1));
+                comboBox1.Items.Add(new KeyValuePair<string, int>("Income", 0));
+                comboBox1.Items.Add(new KeyValuePair<string, int>("Expense", 1));
 
-            comboBox1.DisplayMember = "key";
-            comboBox1.ValueMember = "value";
+                comboBox1.DisplayMember = "key";
+                comboBox1.ValueMember = "value";
 
 
         }
@@ -82,9 +89,11 @@ namespace Expense_Manager.Views
             {
                 MessageBox.Show("Category Added Successfully");
             }
+            this.refreshTransactionList();
 
         }
 
+     
         private void categoryBox_TextChanged(object sender, EventArgs e)
         {
 
