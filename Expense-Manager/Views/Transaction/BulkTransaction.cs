@@ -242,11 +242,21 @@ namespace Expense_Manager.Views.Transaction
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (transactionCount<1)
+            {
+                MessageBox.Show("Please Add Transactions");
+                return;
+            }
             for (int i = 0; i < transactionCount; i++)
             {
                 string NametextBox = "textBox" + i.ToString();
                 Control ctl = this.Controls.Find(NametextBox, true).FirstOrDefault();
                 TextBox tb = (TextBox)ctl;
+                if (string.IsNullOrEmpty(tb.Text))
+                {
+                    MessageBox.Show("You are missing field <Transaction Name> for a particular Transaction");
+                    return;
+                }               
                 string transactionName = tb.Text;               
                 string categoryBox = "categoryComboBox" + i.ToString();
                 string entityBox = "entityComboBox" + i.ToString();
@@ -254,14 +264,34 @@ namespace Expense_Manager.Views.Transaction
                 string picker = "picker" + i.ToString();
                 Control categoryControl  = this.Controls.Find(categoryBox, true).FirstOrDefault();
                 ComboBox categoryCombo = (ComboBox)categoryControl;
+                if (categoryCombo.SelectedIndex == -1)
+                {
+                    MessageBox.Show("You are missing field <Category> for a particular Transaction");
+                    return;
+                }
                 KeyValuePair<string, int> CategoryKeyValue = (KeyValuePair<string, int>)categoryCombo.SelectedItem;
                 int category = CategoryKeyValue.Value;
                 Control entityControl = this.Controls.Find(entityBox, true).FirstOrDefault();
                 ComboBox entityCombo = (ComboBox)entityControl;
+                if (entityCombo.SelectedIndex == -1)
+                {
+                    MessageBox.Show("You are missing field <Entity> for a particular Transaction");
+                    return;
+                }
                 KeyValuePair<string, int> EntityKeyValue = (KeyValuePair<string, int>)entityCombo.SelectedItem;
                 int entity = EntityKeyValue.Value;
                 Control amountControl = this.Controls.Find(amountTextBox, true).FirstOrDefault();
                 TextBox amountText = (TextBox)amountControl;
+                if (string.IsNullOrEmpty(amountText.Text))
+                {
+                    MessageBox.Show("You are missing field <Amount> for a particular Transaction");
+                    return;
+                }
+                if (!amountText.Text.All(char.IsDigit))
+                {
+                    MessageBox.Show("You have provided Non-Numeric value for field <Amount> for a particular Transaction");
+                    return;
+                }
                 double amount = double.Parse(amountText.Text);
                 Control timeControl = this.Controls.Find(picker, true).FirstOrDefault();
                 DateTimePicker timePicker = (DateTimePicker)timeControl;

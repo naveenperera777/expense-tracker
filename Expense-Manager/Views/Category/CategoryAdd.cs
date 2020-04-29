@@ -63,6 +63,20 @@ namespace Expense_Manager.Views
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(categoryLimit.Text))
+            {
+                MessageBox.Show("Please Enter Amount");
+                return;
+            }
+            if (!categoryLimit.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Please Enter Numeric Amount");
+                return;
+            }
+            if (this.comboBox1.SelectedIndex == -1) {
+                MessageBox.Show("Please Select a Category");
+                return;
+            }
             string categoryName = categoryBox.Text;
             double limit = double.Parse(categoryLimit.Text);
             KeyValuePair<string, int> keyValue = (KeyValuePair<string, int>)comboBox1.SelectedItem;
@@ -70,7 +84,7 @@ namespace Expense_Manager.Views
             string key = keyValue.Key;
             int value = keyValue.Value;
 
-            if (categoryName.Equals(""))
+            if (string.IsNullOrEmpty(categoryName))
             {
                 MessageBox.Show("Please Enter Category Name");
             }
@@ -150,12 +164,7 @@ namespace Expense_Manager.Views
                 categoryAddDto = serializer.Deserialize(fs) as CategoryAddDto;
                 categoryBox.Text = categoryAddDto.categoryName;
                 categoryLimit.Text = categoryAddDto.categoryLimit.ToString();
-
-                comboBox1.Items.Add(new KeyValuePair<string, int>("Income", 0));
-                comboBox1.Items.Add(new KeyValuePair<string, int>("Expense", 1));
-
-                comboBox1.DisplayMember = "key";
-                comboBox1.ValueMember = "value";
+                comboBox1.Text = categoryAddDto.categoryType;
 
             }
         }

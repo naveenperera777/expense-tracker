@@ -50,6 +50,26 @@ namespace Expense_Manager.Views.Category
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(categoryName.Text))
+            {
+                MessageBox.Show("Please Enter Category Name");
+                return;
+            }
+            if (string.IsNullOrEmpty(categoryLimit.Text))
+            {
+                MessageBox.Show("Please Enter Category Amount");
+                return;
+            }
+            if (!categoryLimit.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Please Enter Numeric Amount");
+                return;
+            }
+            if (this.comboBox1.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please Select a Category Type");
+                return;
+            }
             CategoryEditDto categoryEditDto = new CategoryEditDto();
             categoryEditDto.categoryId = this.categoryId;
             categoryEditDto.categoryName = categoryName.Text;

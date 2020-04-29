@@ -36,7 +36,7 @@
             // 
             // categoryViewBtn
             // 
-            this.categoryViewBtn.Location = new System.Drawing.Point(94, 95);
+            this.categoryViewBtn.Location = new System.Drawing.Point(112, 172);
             this.categoryViewBtn.Name = "categoryViewBtn";
             this.categoryViewBtn.Size = new System.Drawing.Size(245, 96);
             this.categoryViewBtn.TabIndex = 0;
@@ -46,7 +46,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(377, 95);
+            this.button2.Location = new System.Drawing.Point(418, 177);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(311, 91);
             this.button2.TabIndex = 1;
@@ -56,7 +56,7 @@
             // 
             // reportBtn
             // 
-            this.reportBtn.Location = new System.Drawing.Point(94, 221);
+            this.reportBtn.Location = new System.Drawing.Point(103, 313);
             this.reportBtn.Name = "reportBtn";
             this.reportBtn.Size = new System.Drawing.Size(245, 96);
             this.reportBtn.TabIndex = 2;
@@ -66,7 +66,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(377, 226);
+            this.button1.Location = new System.Drawing.Point(418, 318);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(311, 91);
             this.button1.TabIndex = 3;

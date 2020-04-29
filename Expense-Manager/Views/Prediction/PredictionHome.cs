@@ -40,7 +40,6 @@ namespace Expense_Manager.Views.Prediction
             maxDateReader.Close();
             totalAmount = reportController.getTotalTransactionAmount();
             days = (maxDate - minDate).Days;
-         
 
             textBox1.Text = (totalAmount / days).ToString();
             textBox1.ReadOnly = true;

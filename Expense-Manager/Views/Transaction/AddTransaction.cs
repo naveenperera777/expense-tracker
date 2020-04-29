@@ -59,6 +59,36 @@ namespace Expense_Manager.Views.Transaction
 
         private void submit_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(transactionName.Text))
+            {
+                MessageBox.Show("Please Enter Transaction Name");
+                return;
+            }
+            if (string.IsNullOrEmpty(amount.Text))
+            {
+                MessageBox.Show("Please Enter Transaction Amount");
+                return;
+            }
+            if (!amount.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Please Enter Numeric Amount");
+                return;
+            }
+            if (string.IsNullOrEmpty(notes.Text))
+            {
+                MessageBox.Show("Please Enter a Transaction Note");
+                return;
+            }
+            if (this.comboBox2.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please Select a Category");
+                return;
+            }
+            if (this.entityComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please Select an Entity");
+                return;
+            }
             string transaction_Name = transactionName.Text;
             double transaction_Amount = double.Parse(amount.Text);
             string transaction_notes = notes.Text;
